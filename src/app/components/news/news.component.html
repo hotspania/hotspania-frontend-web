@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-header d-flex flex-row justify-content-around align-items-center relax-gradiente text-white">
+    <strong  class="text-success" >NUEVO</strong> {{data.titulo}}  {{data.creado | date:'short'}}
+    <button type="button" class="btn btn-outline-light" (click)="change()">Mas</button>
+  </div>
+  <div class="card-body" *ngIf="status">
+    <blockquote class="blockquote mb-0">
+      <p>{{data.mensaje}}</p>
+      <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+    </blockquote>
+  </div>
+</div>

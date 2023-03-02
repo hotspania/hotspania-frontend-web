@@ -1,0 +1,40 @@
+ <!-- Modal -->
+ <!-- <div class="modal-background" *ngIf="show" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+   tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+   <div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+     style="display:block">
+     <div class="modal-dialog modal-fullscreen modal-dialog-scrollable modal-dialog-centered">
+       <div class="modal-content relax-gradiente">
+        
+       </div>
+     </div>
+   </div>
+
+ </div> -->
+
+ 
+   <div class="container d-flex flex-column relax-gradiente pb-3 vh-100">
+     <div class="align-self-end p-2 mr-3">
+       <button type="button" (click)="eventos.Closing()" class="btn-close bg-white" data-bs-dismiss="modal"
+         aria-label="Close"></button>
+     </div>
+     <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+       <div ngxSlickItem *ngFor="let slide of slides" class="slide relax-gradiente">
+         <app-image-container img="{{slide}}" tipe="profile" [height]="screenHeight" [width]="screenWidth">
+         </app-image-container>
+       </div>
+     </ngx-slick-carousel>
+  
+     <!-- <div class="d-flex flex-wrap justify-content-evenly ">
+       <div class="d-grid gap-2">
+         <a type="button" class="btn btn-info boton_llamada" [href]="telefono" target="_blank"><img style="width: 20px;"
+             src="/assets/svg/llamar.svg"> Llámala</a>
+       </div>
+       <div class="d-grid gap-2">
+         <a type="button" class="btn boton_whatsapp" [href]="whatsapp" target="_blank"><img style="width: 20px;"
+             src="/assets/svg/whatsapp.svg"> Chatea</a>
+       </div>
+  
+     </div> -->
+   </div>
+

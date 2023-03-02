@@ -1,0 +1,14 @@
+.border{
+    border-width: 1px;
+    border-style: solid;
+    border-top-color: white;
+    
+}
+
+.box{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+

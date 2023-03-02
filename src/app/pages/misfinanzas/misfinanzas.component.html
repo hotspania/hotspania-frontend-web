@@ -1,0 +1,141 @@
+<app-navbar-account></app-navbar-account>
+<div class="container-fluid full dark">
+    <div class="row p-2">
+        <h4 class="text-center text-white">Mis Publicaciones</h4>
+        <div class="col-sm-4">
+            <div class="card relax-gradiente text-white" >
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                  <h5 class="card-title">Listado</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+
+        </div>
+        <div class="col-sm-4">
+            <div class="card relax-gradiente text-white" >
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                  <h5 class="card-title">Letra</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+
+        </div>
+        <div class="col-sm-4">
+            <div class="card relax-gradiente text-white" >
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                  <h5 class="card-title">Flotante</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+
+        </div>
+
+    </div>
+
+    <div class="row mt-3 p-2">
+        <div class="col-sm-6">
+          <!-- Illustrations -->
+          <div class="card shadow mb-4 relax-gradiente text-white" >
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-white">Ultimos Ingresos</h6>
+            </div>
+            <div class="card-body" *ngIf="$profile">
+              <table class="table">
+                <thead>
+                  <tr class="p-0 text-center">
+                    <th class="p-0" scope="col">#</th>
+                    <th class="p-0" scope="col">Monto</th>
+                    <th class="p-0" scope="col">Description</th>
+                    <th class="p-0" scope="col">Fecha</th>
+                    <th class="p-0" scope="col">Admin</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of inputs ;index as i" class="p-0 text-center">
+                    <th class="p-0" scope="row">{{i+1}}</th>
+                    <td class="p-0">{{item.amount | currency:'ARS':'symbol':'1.0'}}</td>
+                    <td class="p-0" >{{item.description}}</td>
+                    <td class="p-0">{{item.date | date }}</td>
+                    <td class="p-0">
+                      {{item.admin | ficha : 'admin' | async }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                  <li class="page-item" [ngClass]="{disabled: (1===input_number)?true:false  }"><a class="page-link"
+                      (click)="addpage(input_number-1)">Previous</a></li>
+                  <div *ngFor="let i of pages_input">
+                    <li class="page-item" [ngClass]="{active: (i===input_number)?true:false  }"><a class="page-link"
+                        (click)="addpage(i)">{{i}}</a></li>
+                  </div>
+                  <li class="page-item" [ngClass]="{disabled: (pages_input.length===input_number)?true:false  }"><a
+                      class="page-link" (click)="addpage(input_number+1)">Next</a></li>
+                </ul>
+              </nav>
+    
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <!-- Illustrations -->
+          <div class="card shadow mb-4 relax-gradiente text-white">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-white">Ultimas Compras</h6>
+            </div>
+            <div class="card-body" *ngIf="$profile">
+              <table class="table" >
+                <thead>
+                  <tr class="p-0 text-center">
+                    <th class="p-0" scope="col">#</th>
+                    <th class="p-0">Paquete</th>
+                    <th class="p-0">Clase</th>
+                    <th class="p-0" scope="col">Monto</th>
+                    <th class="p-0" scope="col">Description</th>
+                    <th class="p-0" scope="col">Fecha</th>
+                    <th class="p-0" scope="col">Admin</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of outputs ;index as i" class="p-0 text-center">
+                    <th class="p-0" scope="row">{{i+1}}</th>
+                    <td class="p-0">{{item?.paquete[0]?.titulo}}</td>
+                    <td class="p-0">{{item?.paquete[0]?.clase}}</td>
+                    <td class="p-0">{{item.amount | currency:'ARS':'symbol':'1.0'}}</td>
+                    <td class="p-0" >{{item.description}}</td>
+                    <td class="p-0">{{item.date | date }}</td>
+                    <td class="p-0">
+                      {{item.admin | ficha : 'admin' | async }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                  <li class="page-item" [ngClass]="{disabled: (1===output_number)?true:false  }"><a class="page-link"
+                      (click)="addpage2(output_number-1)">Previous</a></li>
+                  <div *ngFor="let i of pages_output">
+                    <li class="page-item" [ngClass]="{active: (i===output_number)?true:false  }"><a class="page-link"
+                        (click)="addpage2(i)">{{i}}</a></li>
+                  </div>
+                  <li class="page-item" [ngClass]="{disabled: (pages_output.length===output_number)?true:false  }"><a
+                      class="page-link" (click)="addpage2(output_number+1)">Next</a></li>
+                </ul>
+              </nav>
+    
+            </div>
+          </div>
+    
+        </div>
+    
+      </div>
+</div>
+
+

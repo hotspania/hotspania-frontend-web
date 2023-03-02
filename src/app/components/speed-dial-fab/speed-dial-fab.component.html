@@ -1,0 +1,19 @@
+<div *ngIf="show">
+  <div id="fab-dismiss" *ngIf="fabTogglerState==='active'" (click)="onToggleFab()" >
+  </div>
+  
+  <div class="fab-container" style="z-index: 200;">
+    <button mat-fab class="fab-toggler btn btn-primary" (click)="onToggleFab()"  color="primary">
+      <i class="material-icons" [@fabToggler]="{value: fabTogglerState}">dehaze</i>
+    </button>
+    <div [@speedDialStagger]="buttons.length">
+      <div *ngFor="let btn of buttons" class="d-flex flex-row justify-content-around" style="width:150px">      
+        <button mat-flat-button class="fab-secondary btn btn-light" color="primary" (click)="nav(btn.route)">
+          {{btn.name}}
+        </button>
+  
+      </div>
+    </div>
+  </div>
+
+</div>

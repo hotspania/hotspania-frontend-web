@@ -1,0 +1,77 @@
+<div class="container-fluid">
+  <!-- <div class="row bg-dark">
+    <div class="col-sm-12 p-2">
+      <div class="text-light">
+        <div>
+          <h5>1.Seleccione los Listados donde Aparecera</h5>
+          <h5>Listados Disponibles</h5>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="defaultCheck1" value="Lista General" [(ngModel)]="value1"
+            (change)="setlistado($event.target.value)">
+          <label class="form-check-label" for="defaultCheck1">
+            Lista General
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="defaultCheck1" value="disponible" [(ngModel)]="value2"
+            (change)="setlistado($event.target.value)">
+          <label class="form-check-label" for="defaultCheck1">
+            Disponible
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="defaultCheck1" value="Premium" [(ngModel)]="value3"
+            (change)="setlistado($event.target.value)">
+          <label class="form-check-label" for="defaultCheck1">
+            Premium
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="defaultCheck1" value="V.I.P" [(ngModel)]="value4"
+            (change)="setlistado($event.target.value)">
+          <label class="form-check-label" for="defaultCheck1">
+            V.I.P
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="defaultCheck1" value="PROMO" [(ngModel)]="value5"
+            (change)="setlistado($event.target.value)">
+          <label class="form-check-label" for="defaultCheck1">
+            PROMO
+          </label>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="row mb-2 bg-dark mt-2">
+    <div class="col-sm-12">
+      <h5 class="text-white">2.Defina la Imagen a utilizar en los Listados Seleccionados</h5>
+    </div>
+    <div class="col-sm-12">
+      <h5 class="text-white text-center">Imagenes Seleccionada</h5>
+    </div>
+    <div class="col-sm-12">
+      <div class="d-flex flex-wrap justify-content-center">
+        <div class="card p-1 relax-gradiente rounded m-1" *ngIf="profileImage">
+          <app-image-container [img]="profileImage" tipe="profile"></app-image-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row bg-dark p-2">
+    <div class="col-sm-12">
+      <h5 class="text-white text-center">Seleccione la imagen para sus listado</h5>
+    </div>
+    <div class="col-sm-12">
+      <div class="d-flex flex-wrap">
+        <div class="card p-1 relax-gradiente rounded m-1" *ngFor="let i of imagenes" (click)="addImagen(i)">
+          <app-image-container img="{{i}}" tipe="profile" ></app-image-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-modal-login [show]="modal_loading"></app-modal-login>

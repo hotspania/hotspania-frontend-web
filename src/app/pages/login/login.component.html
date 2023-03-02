@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="row text-center vh-100">
+    <div class="col textura">
+      <div class="d-flex flex-column align-items-center align-content-center vh-100 justify-content-center">
+          <img src="assets/img/logo.png" class="img" >
+        <div>
+          <h4  class="text-white">Iniciá sesión o regístrate</h4>
+        </div>
+        <div>
+          <form [formGroup]="form" (ngSubmit)="login()">
+            <div class="form-group mt-4">
+              <label class="text-white">Ingresá tu usuario</label>
+              <input type="text" class="form-control rounded-pill" id="exampleInputEmail1" aria-describedby="emailHelp"
+                formControlName="email" style="text-transform:lowercase;">
+              <small class="form-text text-muted text-gray">Nunca compartiremos tu información</small>
+            </div>
+            <div class="form-group">
+              <label class="text-white">Contraseña </label>
+              <input type="password" class="form-control rounded-pill" formControlName="pass"
+                id="exampleInputPassword1">
+            </div>
+            <button type="submit" class="btn btn-danger boton_rojo mt-3" [disabled]="!form.valid">Entrá</button>
+          </form>
+        </div>
+        <div>
+          <small class="form-text text-danger mt-4  text-muted text-gray">¿Olvidaste tu usuario y contraseña?</small>
+        </div>
+      </div>
+    </div>
+    <div class="col fondo">
+      <div class="d-flex flex-column align-items-center align-content-center vh-100 justify-content-center">
+        <div class="mb-3">
+          <h4 class="text-white">¿Aún no eres anunciante?</h4>
+        </div>
+        <div>
+          <p class="text-white">¡Qué esperás! Sé parte del Sitio Líder de Masajistas de Argentina</p>
+        </div>
+        <div class="d-flex justify-content-center">
+        </div>
+        <div class="mb-3">
+          <h4 class="text-white">¡Y mucho más!</h4>
+        </div>
+        <div>
+          <a type="button" [href]="whatsapp" target="_blank" class="btn btn-info boton_azul mt-3">Registrate gratis</a>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<app-modal-login [show]="loading"></app-modal-login>
+
+

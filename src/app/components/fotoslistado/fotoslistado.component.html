@@ -1,0 +1,49 @@
+ <div class="container-fluid">
+   <div class="row bg-dark ">
+     <div class="col-sm-12">
+       <h5 class="text-white text-center">Defina las Imagenes a utilizar - Imagenes Faltantes {{20-profileImages.length}}</h5>
+     </div>  
+     <div class="col-sm-12">
+      <div class="d-grid gap-2">
+        <button class="btn btn-info" type="button" (click)="update()" *ngIf="status">Actualizar</button>      
+      </div>
+     
+    </div>
+   </div>
+   <div class="row bg-dark mt-4">
+     <div class="col-sm-12">
+       <h5 class="text-white text-center">Imagenes Actuales de la publicacion</h5>
+     </div>
+     <div class="col-sm-12">
+       <div class="d-flex flex-row flex-wrap ">
+         <div class="card p-1 relax-gradiente rounded m-1" *ngFor="let i of profileImages">
+           <button class="btn btn-danger btn-circle btn-sm" type="button" aria-label="Close" (click)="quitarImagen(i)"
+             style="position: absolute;top: 5;">
+             <span aria-hidden="true">
+               <i class="fas fa-trash"></i>
+             </span>
+           </button>
+           <app-image-container img="{{i}}" tipe="profile"></app-image-container>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="row bg-dark mt-2">
+     <div class="col-sm-12">
+       <h5 class="text-center text-white" >Seleccione 20 imagenes maximo para su perfil</h5>
+     </div>
+     <div class="col-sm-12">
+      <div class="d-flex flex-row flex-wrap">
+        <div class="card p-1 relax-gradiente rounded m-1" *ngFor="let i of available_images">
+          <app-image-container img="{{i.url}}" tipe="profile" (click)="addImagen(i)"></app-image-container>
+        </div>              
+      </div>
+     </div>
+   </div>
+ </div>
+
+
+
+
+ <app-modal-login [show]="modal_loading"></app-modal-login>

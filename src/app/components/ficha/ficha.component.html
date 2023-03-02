@@ -1,0 +1,8 @@
+<div class="box d-flex flex-column" [ngStyle]="{'width.px': width,'height.px':heigth,'background-image': 'url('+ image +')'}"
+  (click)="nav()" >
+  <img [src]="agua" alt="chicas planeta relax" class="box-img2" [ngStyle]="{'width.px': width,'height.px':heigth}">
+  <img [src]="gif" alt="chicas planeta relax" class="box-img" [ngStyle]="{'width.px': width,'height.px':heigth}" *ngIf="item.online">
+  <div class="relax-gradiente  mt-auto " style="z-index: -28;opacity: 0.6;padding-bottom: 3px;">
+    <h5 class="text-white text-center text-capitalize">{{item.username}}</h5>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-text text-center">Seleccione las Imagenes a Subir</h4>
+      </div>
+      <div class="card-body">
+        <div class="text-center">
+          <input type="file" #imagesuploader (change)="uploadImages($event.target.files)" multiple
+            style="display: none;">
+          <button class="btn btn-outline-primary btn-circle btn-lg" (click)="imagesuploader.click()">
+            Escoger Imagen
+          </button>
+
+        </div>
+      </div>
+    </div>
+    <div class="card mt-3">
+      <div class="card-header">
+        <h4>Defina los Retoques</h4>
+      </div>
+      <div class="card-body">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="retoques1" value="Ocultar Tatuajes y manchas"
+            (change)="pushlocations($event)">
+          <label class="form-check-label" for="exampleRadios2">
+            Ocultar Tatuajes y manchas
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="retoques2" value="Ocultar Cara"
+            (change)="pushlocations($event)">
+          <label class="form-check-label" for="exampleRadios2">
+            Ocultar Cara
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="retoques3" value="Ocultar todo"
+            (change)="pushlocations($event)">
+          <label class="form-check-label" for="exampleRadios2">
+            Ocultar todo
+          </label>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="card mt-2">
+      <div class="card-header">
+        <h4>Tipo de Imagen</h4>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Que tipo de Imagen es?</label>
+          <select class="form-control" id="exampleFormControlSelect1" (change)="settype($event)"
+            [(ngModel)]="imagetype">
+            <option value="">Seleccione</option>
+            <option value="original">Original</option>
+            <option value="profile">FIcha</option>
+            <option value="login">Login Image</option>
+          </select>
+        </div>
+      </div>
+    </div> -->
+    <div class="card mt-4 mb-3">
+      <div class="card-body">
+        <button class="btn btn-outline-primary btn-block " (click)="save()">
+          Subir Imagenes
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="d-flex flex-wrap ">
+      <div *ngFor="let item of images">
+        <div class="card bg-dark text-white" style="max-width: 200px;">
+          <img [src]="item.imagen" class="card-img" alt="...">
+          <div class="card-img-overlay text-right" style="padding: 5px;">
+            <button class="btn btn-danger btn-circle btn-sm" (click)="quitarImagen(item)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<app-modal-login [show]="modal_loading"></app-modal-login>

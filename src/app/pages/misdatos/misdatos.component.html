@@ -1,0 +1,198 @@
+<app-navbar-account></app-navbar-account>
+<div class="container-fluid dark text-white full">
+  <form action="" [formGroup]="form">
+    <div class="row">
+
+      <div class="col-sm-12">
+        <h5 class="text-center">Mis Datos de Perfil</h5>
+      </div>
+      <div class="col-sm-6">
+        <div class="d-flex flex-row justify-content-center">
+          <div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Mi telefono</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              formControlName="telefono">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Mi Whastapp</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              formControlName="whatsapp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>           
+            <div id="emailHelp" class="form-text">Decides estar en promo.</div>
+            <div class="mt-2">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <label class="form-check-label" for="inlineCheckbox1">PROMO</label>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div id="emailHelp" class="form-text">Decides estar en V.I.P O PREMIUM.</div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <label class="form-check-label" for="inlineCheckbox1">V.I.P</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">PREMIUM</label>
+              </div>           
+              <div id="emailHelp" class="form-text">Solo se puede seleccionar una opcion.</div>
+            </div>
+            <div class="form-group mt-4">
+              <label for="formGroupExampleInput">Zona donde Trabajara</label>
+              <select class="form-control" formControlName="zonas">
+                <option selected disabled>Choose...</option>
+                <option *ngFor="let item of zonas" [value]="item?.titulo">{{item.titulo}}</option>
+              </select>
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+
+           
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <h5 class="">Mis Horarios</h5>
+        <div class="d-flex flex-row">
+          <div>
+
+            <div class="form-group">
+              <label for="formGroupExampleInput">Dia de Inicio</label>
+              <select formControlName="inicio" class="form-control">
+                <option selected disabled>Choose...</option>
+                <option value="Lunes">Lunes</option>
+                <option value="Martes">Martes</option>
+                <option value="Miercoles">Miercoles</option>
+                <option value="Jueves">Jueves</option>
+                <option value="Viernes">Viernes</option>
+                <option value="Sabado">Sabado</option>
+                <option value="Domingo">Domingo</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput">Dia de Fin</label>
+              <select formControlName="fin" class="form-control">
+                <option selected disabled>Choose...</option>
+                <option value="Lunes">Lunes</option>
+                <option value="Martes">Martes</option>
+                <option value="Miercoles">Miercoles</option>
+                <option value="Jueves">Jueves</option>
+                <option value="Viernes">Viernes</option>
+                <option value="Sabado">Sabado</option>
+                <option value="Domingo">Domingo</option>
+              </select>
+            </div>
+            <div class="d-flex flex-row justify-content-around">
+              <div class="form-group m-2">
+                <label for="formGroupExampleInput">Hora de Inicio</label>
+                <select formControlName="horario_inicio" class="form-control">
+                  <option selected disabled>Choose...</option>
+                  <option value="Full">Full</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="00">00</option>
+                </select>
+              </div>
+
+              <div class="form-group m-2">
+                <label for="formGroupExampleInput">Hora de Fin</label>
+                <select formControlName="horario_fin" class="form-control">
+                  <option selected disabled>Choose...</option>
+                  <option value="Time">Time</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="00">00</option>
+                </select>
+              </div>
+
+            </div>   
+
+
+          </div>
+        </div>
+        <div class="mt-5">
+            <h5 class="">Donde atenderas?</h5>
+            <div class="form-group">            
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="Domicilio"
+                    [checked]="data?.atencion?.includes('Domicilio')" (change)="pushlocations($event)">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Domicilio
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="Depto. Propio"
+                    [checked]="data?.atencion?.includes('Depto. Propio')" (change)="pushlocations($event)">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Depto. Propio
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="Hoteles"
+                    [checked]="data?.atencion?.includes('Hoteles')" (change)="pushlocations($event)">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Hoteles
+                  </label>
+                </div>
+              </div>
+
+        </div>
+      </div>
+
+      <div class="d-grid gap-2 mt-5">
+        <button class="btn btn-primary" type="button" (click)="save()">Guardar</button>
+     
+      </div>
+
+
+
+
+
+    </div>
+  </form>
+</div>
+

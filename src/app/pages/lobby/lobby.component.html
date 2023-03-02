@@ -1,0 +1,67 @@
+<div class="container-fluid relax-gradiente" style="min-height: 100vh;">
+  <div class="row text-white  text-center align-items-center">
+    <div class="col-sm-12">
+      <h5>Bienvenida </h5>
+      <h5>Verificacion de identidad por favor mira la camara se tomara una foto de tu rostro, esta se comprobara con nuestra imagen guardada
+        en nuestra base de datos</h5>
+      <div class="d-flex flex-row justify-content-center">
+        <div class="spinner-grow text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-secondary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-danger" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-warning" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>     
+        <div class="spinner-grow text-dark" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <h4 class="h4 mr-1 ml-1">{{time}}</h4>
+        <div class="spinner-grow text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-secondary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-danger" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-warning" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>     
+        <div class="spinner-grow text-dark" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>  
+    </div>  
+    <div class="col-sm-12">
+      <div class="d-flex flex-column p-4">
+        <div *ngIf="showWebcam">
+          <webcam  [height]="screenHeight" [width]="screenWidth" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+            [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions"
+            [imageQuality]="1" (cameraSwitched)="cameraWasSwitched($event)" (initError)="handleInitError($event)">
+          </webcam>
+          <br />     
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-modal-login [show]="loading"></app-modal-login>

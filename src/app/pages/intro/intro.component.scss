@@ -1,0 +1,50 @@
+a{
+    color: #0099FF;
+}
+
+
+.type{
+    @import url('https://fonts.googleapis.com/css?family=Cinzel&display=swap');
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: red;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 3rem;
+}
+.logo_fill{
+    display: block;
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    min-width: 200px;
+    margin: auto;
+    max-height: 800x;
+    min-height: 150px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('/assets/img/logo.png');
+}
+.boton_intro{
+    width: 250px;
+    margin-top: 3rem;
+    -webkit-box-shadow: rgb(0, 0, 0) 0px 10px 13px -7px, 0px 0px 13px 10px #aa0000; 
+    box-shadow: rgb(0, 0, 0) 0px 10px 13px -7px, 0px 0px 13px 10px #aa0000;
+    border-radius: 20px;
+    background-color: red;
+}
+.mensaje{
+    text-align: center;
+    color: red;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+}
+.boton_cuenta{
+    width: 250px;
+    margin-top: 3rem;
+    -webkit-box-shadow: rgb(0, 0, 0) 0px 10px 13px -7px, 0px 0px 13px 10px #0099FF; 
+    box-shadow: rgb(0, 0, 0) 0px 10px 13px -7px, 0px 0px 13px 10px #0099FF;
+    border-radius: 20px;
+    background-color: #0099FF;
+}

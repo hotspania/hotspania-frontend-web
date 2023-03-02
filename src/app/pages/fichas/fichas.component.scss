@@ -1,0 +1,81 @@
+.border{
+    border-width: 1px;
+    border-style: solid;
+    border-top-color: white;
+    
+}
+
+.box{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.mini_container{
+    height: 180px;
+    width: 120px;
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.f{
+    height: 30px;
+}
+.imagen{
+    background-image: url('/assets/img/2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.imagen_size{
+    height: 180px;
+    width: 120px;
+}
+.nombre_perfil{
+    @import url('https://fonts.googleapis.com/css?family=Cinzel&display=swap');
+    font-family: 'Cinzel', serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: inherit;
+    z-index: 9999;
+}
+.mo-fire {
+  position: absolute;
+  width: 120px;
+  height: 180px;
+ // bottom: -135px;
+  z-index: 4;
+}
+.mo-fire svg {
+  height: auto;
+  position:relative;
+}
+
+.gif{
+    position: absolute;
+}
+
+input{
+    color: white;
+    border-color: #212529;
+    border-radius: 0px !important;
+
+ &:focus{
+    color: white;
+    border-color: #212529;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+ }
+
+}
+.icon{
+    color: white;
+}
+
+

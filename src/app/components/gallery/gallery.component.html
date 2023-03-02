@@ -1,0 +1,8 @@
+<ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" (init)="slickInit($event)"
+  (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
+  <div ngxSlickItem *ngFor="let slide of slides" class="slide relax-gradiente">
+    <app-image-container img="{{slide}}" tipe="profile" [height]="screenHeight" [width]="screenWidth" (click)="zoom(slide)" ></app-image-container>
+  </div>
+</ngx-slick-carousel>
+
+<!-- <app-imagen [show]="show" [image]="image" [slides]="data" *ngIf="modal_image"  [telefono]="telefono" [whatsapp]="whatsapp"></app-imagen> -->
