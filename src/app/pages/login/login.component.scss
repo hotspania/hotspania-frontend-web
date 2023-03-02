@@ -1,15 +1,12 @@
 .textura{
-    background-image: url('/assets/img/intro.jpg'); 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;   
+    background: #131313;
 }
 .fondo{
-    background-color: #2B0000;
+    background-color: #252525;
 }
 .img{
     height: auto;
-    width: 30vw;
+    width: 400px;
 }
 .img-2{
     height: 8vh;
@@ -76,20 +73,26 @@ ion-item{
     border: 1px solid #212529;
     border-radius: .25rem;
 }
-.boton_rojo{
-    width: 250px;
-    -webkit-box-shadow: rgb(0, 0, 0) 0px 10px 13px -7px, 0px 0px 13px 10px #aa0000; 
-    box-shadow: rgb(0, 0, 0) 0px 10px 13px -7px, 0px 0px 13px 10px #aa0000;
+.boton_login{
+    width: 400px;
+    height: 50px;
+    -webkit-box-shadow: rgb(0, 0, 0) 0px 10px 13px -7px, 0px 0px 13px 10px #f44806; 
+    box-shadow: rgb(0, 0, 0) 0px 10px 13px -7px, 0px 0px 13px 10px #f44806;
     border-radius: 20px;
-    background-color: red;
+    background-color: #f44806;
+    font-size: 23px;
+    color:#fff;
 }
-.boton_azul{
-    width: 250px;
+.boton_registro{
+    width: 400px;
+    height: 50px;
     margin-top: 3rem;
-    -webkit-box-shadow: rgb(0, 0, 0) 0px 10px 13px -7px, 0px 0px 13px 10px #0099FF; 
-    box-shadow: rgb(0, 0, 0) 0px 10px 13px -7px, 0px 0px 13px 10px #0099FF;
+    color:#fff;
+    -webkit-box-shadow: rgb(0, 0, 0) 0px 10px 13px -7px, 0px 0px 13px 10px #f44806; 
+    box-shadow: rgb(0, 0, 0) 0px 10px 13px -7px, 0px 0px 13px 10px #f44806;
     border-radius: 20px;
-    background-color: #0099FF;
+    background-color: transparent;
+    font-size: 23px;
 }
 
 li{

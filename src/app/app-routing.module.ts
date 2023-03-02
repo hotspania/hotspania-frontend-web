@@ -72,7 +72,7 @@ const routes: Routes = [
     component: MispeticionesComponent,
   },
   {
-    path: 'chicas/rosario',
+    path: 'chicas/barcelona',
     canActivate:[LoginGuard],
     component: MispeticionesComponent,
   }

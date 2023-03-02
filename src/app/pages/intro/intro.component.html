@@ -1,22 +1,24 @@
-<div class="dark container-fluid">
+<div class="container-fluid" style="background: #161616;">
   <div class="row vh-100">
     <div class="col-sm-12">
       <div class="d-flex h-100 flex-column justify-content-between align-items-center">
-        <div itemscope itemtype="" class="pt-3 type">
-          <h1>Encuentra las mejores Chicas de Rosario</h1>
+        <div itemscope itemtype="" style="color: #f44806;" class="pt-3 type">
+          <h1>Encuentra las chicas más cachondas de Barcelona</h1>
         </div>
-        <div class="logo_fill">
+        <div class="">
+          <img src="/assets/img/logo.png" class="logo_new" />
         </div>
 
-        <button type="button" class="btn btn-danger boton_intro" [routerLink]="['/chicas/rosario']">Entrá</button>
+        <hr class="hr-intro"/>
 
-        <div class="mensaje pl-3 pr-3" style="max-width: 20rem">
-          Al entrar, doy por aceptado que SOY MAYOR DE EDAD y que ACEPTO los <a href="#">términos y condiciones de
-            Planeta Relax</a>
+        <div class="mensaje">
+          <input type="checkbox" name="terminos" />
+          <label class="ml-2" for="terminos">Acepto que soy +18 y los <a href="#">términos y condiciones</a></label>
         </div>
+        <button type="button" class="btn boton_intro" [routerLink]="['/chicas/barcelona']">Acceder al portal</button>
         <div class="pb-5 mb-4">
-          <button type="button" class="btn btn-info boton_cuenta" [routerLink]="['/login']"
-            routerLinkActive="router-link-active">Acceder a mi cuenta</button>
+          <button type="button" class="btn boton_cuenta" [routerLink]="['/login']"
+            routerLinkActive="router-link-active">Iniciar sesión o Registrarse</button>
         </div>
       </div>
     </div>
