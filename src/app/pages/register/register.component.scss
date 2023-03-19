@@ -1,0 +1,240 @@
+.main-div {
+    width: 100%;
+    min-height: 100vh;
+    background: #252525;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.correct{
+    border: 4px solid #05bd2f;
+}
+
+.error{
+    border: 4px solid red;
+}
+
+input, select {
+    position: relative;
+}
+
+
+input[type="radio"]:checked:after {
+    width: 13px;
+    height: 13px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #f44806;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+hr{
+    border: 1px solid #f44806;
+    max-width: 180px;
+    min-width: 180px;
+    margin: 0px auto;
+    opacity: 0.5;
+}
+
+.form-div{
+    min-width: 350px;
+    max-width: 350px;
+    border: 1px solid #f44806;
+    border-radius: 10px;
+    box-shadow: rgba(244, 72, 6, 0.5) 0px 3px 8px;
+    padding: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #f6f6f6;
+    margin-top: 15px;
+}
+h2 {
+    margin-top: 20px;
+    color: #f6f6f6;
+    text-align: center;
+}
+#multi-step-form-container {
+    margin-top: 25px;
+}
+.text-center {
+    text-align: center;
+}
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+a{
+    text-decoration: none;
+}
+.pl-0 {
+    padding-left: 0;
+}
+.button {
+    padding: 0.7rem 1.5rem;
+    border: 1px solid #f44806;
+    background-color: #f44806;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.submit-btn {
+    border: 1px solid #13da35;
+    background-color: #13da35;
+}
+.mt-3 {
+    margin-top: 2rem;
+}
+.d-none {
+    display: none;
+}
+.form-step {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 1rem;
+}
+.font-normal {
+    font-weight: normal;
+}
+ul.form-stepper {
+    counter-reset: section;
+    margin-bottom: 3rem;
+}
+ul.form-stepper .form-stepper-circle {
+    position: relative;
+}
+ul.form-stepper .form-stepper-circle span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+.form-stepper-horizontal {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+ul.form-stepper > li:not(:last-of-type) {
+    margin-bottom: 0.625rem;
+    -webkit-transition: margin-bottom 0.4s;
+    -o-transition: margin-bottom 0.4s;
+    transition: margin-bottom 0.4s;
+}
+.form-stepper-horizontal > li:not(:last-of-type) {
+    margin-bottom: 0 !important;
+}
+.form-stepper-horizontal li {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: start;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+.form-stepper-horizontal li:not(:last-child):after {
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    height: 1px;
+    content: "";
+    top: 32%;
+}
+.form-stepper-horizontal li:after {
+    background-color: #dee2e6;
+}
+.form-stepper-horizontal li.form-stepper-completed:after {
+    background-color: #4da3ff;
+}
+.form-stepper-horizontal li:last-child {
+    flex: unset;
+}
+ul.form-stepper li a .form-stepper-circle {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-right: 0;
+    line-height: 1.7rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.38);
+    border-radius: 50%;
+}
+.form-stepper .form-stepper-active .form-stepper-circle {
+    background-color: #f44806 !important;
+    color: #fff;
+}
+
+.form-stepper .form-stepper-active .form-stepper-circle {
+    background-color: #f44806 !important;
+    color: #fff;
+}
+
+.form-stepper .form-stepper-active .label {
+    color: #f44806 !important;
+    
+}
+.form-stepper .form-stepper-active .form-stepper-circle:hover {
+    background-color: #f44806 !important;
+    color: #fff !important;
+}
+.form-stepper .form-stepper-unfinished .form-stepper-circle {
+    background-color: red;
+}
+.form-stepper .form-stepper-completed .form-stepper-circle {
+    background-color: #13da35 !important;
+    color: #fff;
+}
+.form-stepper .form-stepper-completed .label {
+    color: #13da35 !important;
+}
+.form-stepper .form-stepper-completed .form-stepper-circle:hover {
+    background-color: #13da35 !important;
+    color: #fff !important;
+}
+.form-stepper .form-stepper-active span.text-muted {
+    color: #fff !important;
+}
+.form-stepper .form-stepper-completed span.text-muted {
+    color: #fff !important;
+}
+.form-stepper .label {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+.form-stepper a {
+    cursor: default;
+}
+
+.buttons_div{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-navigate-form-step{
+    min-width: 100px;
+    max-width: 100px;
+    text-align: center!important;
+}
+
+.btn-navigate-form-step2{
+    min-width: 100%;
+}

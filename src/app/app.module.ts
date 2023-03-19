@@ -42,6 +42,7 @@ import { NewsComponent } from './components/news/news.component';
 import { PeticionComponent } from './components/peticion/peticion.component';
 
 import {MatButtonModule} from '@angular/material/button';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import {MatButtonModule} from '@angular/material/button';
     ModalImageComponent,
     SpeedDialFabComponent,
     NewsComponent,
-    PeticionComponent    
+    PeticionComponent,
+    RegisterComponent    
   ],
   imports: [
     BrowserModule,

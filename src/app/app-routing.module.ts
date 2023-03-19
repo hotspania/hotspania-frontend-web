@@ -15,6 +15,7 @@ import { MisfinanzasComponent } from './pages/misfinanzas/misfinanzas.component'
 import { MispeticionesComponent } from './pages/mispeticiones/mispeticiones.component';
 import { LoginGuard } from './guards/login.guard';
 import { SessionGuard } from './guards/session.guard';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'login',   
     component: LoginComponent,
+  },
+  {
+    path: 'register',   
+    component: RegisterComponent,
   },
   {
     path: 'lobby/:id',   
