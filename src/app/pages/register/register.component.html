@@ -1,8 +1,8 @@
 <div class="main-div">
   <div class="form-div">
     <div style="display: flex; flex-direction: row; justify-content:space-around;">
-        <h1>Logo</h1>
-        <h1>Regístrate</h1>
+      <h1>Logo</h1>
+      <h1>Regístrate</h1>
     </div>
     <div id="multi-step-form-container">
       <!-- Form Steps / Progress Bar -->
@@ -13,7 +13,7 @@
             <span class="form-stepper-circle step-2-circle">
               <span>1</span>
             </span>
-            <div class="label">Datos</div>
+            <div class="label">Información</div>
 
           </a>
         </li>
@@ -32,122 +32,196 @@
             <span class="form-stepper-circle text-muted step-2-circle">
               <span>3</span>
             </span>
-            <div class="label text-muted">Información</div>
+            <div class="label text-muted">Datos</div>
           </a>
         </li>
       </ul>
       <hr>
       <!-- Step Wise Form Content -->
-      <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST" [formGroup]="form" (change)="onChange($event)">
+      <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST" (change)="onChange($event)" autocomplete="on">
         <!-- Step 1 Content -->
-        <section id="step-1" class="form-step">
-          <h2 class="font-normal">Datos ficticios</h2>
-          <!-- Step 1 input fields -->
-          <div class="form-group mt-4">
-            <label class="text-white">Nombre fantasía</label>
-            <br>
-            <small class="text-white">Sujeto a disponibilidad</small>
-            <input type="text" class="form-control mt-1" id="name" aria-describedby="name"
-              formControlName="name" minlength="2" maxlength="3" name="name" style="text-transform:lowercase;" placeholder="hadita74" style="height:40px;">
-          </div>
-          <div class="form-group mt-4">
-            <label class="text-white">Edad (años)</label>
-            <input type="text" class="form-control mt-1" id="age" aria-describedby="age"
-              formControlName="age" name="age" placeholder="24" style="height:40px;" required>
-          </div>
-          <div class="form-group mt-4">
-            <label class="text-white">Peso (kg)</label>
-            <input type="text" class="form-control mt-1" id="weight" aria-describedby="weight"
-              formControlName="weight" name="weight" placeholder="82" style="height:40px;" required>
-          </div>
-          <div class="form-group mt-4">
-            <label class="text-white">Altura (cm)</label>
-            <input type="text" class="form-control mt-1" id="height" aria-describedby="height"
-              formControlName="height" name="height" placeholder="180" style="height:40px;" required>
-          </div>
-          <div class="form-group mt-4">
-            <label class="text-white">Medidas (cm)</label>
-            <input type="text" name="measures1" class="form-control mt-1" id="measures1" aria-describedby="measures1"
-              formControlName="measures1" placeholder="90" style="height:40px;" required>
-              <input type="text" name="measures2" class="form-control mt-1" id="measures2" aria-describedby="measures2"
-              formControlName="measures2" placeholder="60" style="height:40px;" required>
-              <input type="text" name="measures3" class="form-control mt-1" id="measures3" aria-describedby="measures3"
-              formControlName="measures3" placeholder="90" style="height:40px;" required>
-          </div>
-          <div class="form-group mt-4">
-            <label class="text-white">Días y horarios</label>
-            <input type="text" class="form-control mt-1" id="height" aria-describedby="height"
-              formControlName="height" placeholder="?" style="height:40px;">
-          </div>
-          <div class="form-group mt-4">
-            <label class="text-white">Zona</label>
-            <select class="form-control mt-1" name="zone" id="zone" style="height:40px;" formControlName="height">
-              <option value="barcelona">Barcelona</option>
-              <option value="madrid">Madrid</option>
-              <option value="valencia">Valencia</option>
-            </select>
-          </div>
-          <div class="form-group mt-4">
-            <label class="text-white">¿Fumas?</label>
-            <br>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="smoke1" name="smoke" value="1" formControlName="smoke">
-              <label class="text-white" for="smoke1">Sí</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="smoke2" name="smoke" value="0" formControlName="smoke">
-              <label class="text-white" for="smoke2">No</label>
-            </div>
-          </div>
-          <div class="form-group mt-4">
-            <label class="text-white">Teléfono</label>
-            <input type="text" class="form-control mt-1" id="phone" aria-describedby="phone"
-              formControlName="phone" name="phone" placeholder="663777889" style="height:40px;" required>
-          </div>
-          <small class="form-text" style="color:#fff;"></small>
-          <br>
-          <div class="mt-3">
-            <button class="button btn-navigate-form-step btn-navigate-form-step2" type="button" step_number="2" (click)="validateSection()">Siguiente</button>
-          </div>
-        </section>
-        <!-- Step 2 Content, default hidden on page load. -->
-        <section id="step-2" class="form-step d-none">
-          <h2 class="font-normal">Sube tus imágenes y vídeos</h2>
-          <!-- Step 2 input fields -->
-          <div class="mt-3">
-            <div class="form-group mt-4">
-                <label class="text-white">Archivos</label>
-                <input type="file" (change)="onFileChange($event)" name="files" class="form-control mt-1" id="files" aria-describedby="files"
-                  formControlName="files" accept=".png,.jpeg,.jpg,.webp,.gif,.bmp,.avi,.mp4,.mpg,.mov,.3gp,.wmv,.flv" multiple>
-              </div>
-          </div>
-          <div class="mt-3 buttons_div">
-            <button class="button btn-navigate-form-step" type="button" step_number="1" (click)="validateSection()">Atrás</button>
-            <button class="button btn-navigate-form-step" type="button" step_number="3" (click)="validateSection()">Siguiente</button>
-          </div>
-        </section>
-        <!-- Step 3 Content, default hidden on page load. -->
-        <section id="step-3" class="form-step d-none">
+        <section id="step-1" class="form-step" [formGroup]="realDataForm">
           <h2 class="font-normal">Datos Personales</h2>
           <!-- Step 3 input fields -->
           <div class="mt-3">
             <div class="form-group mt-4">
-              <label class="text-white">Email de registro</label>
-              <input type="email" class="form-control mt-1" id="email" aria-describedby="email"
-                formControlName="email" name="email" style="text-transform:lowercase;" placeholder="usuario14@gmail.com" style="height:40px;" required>
+              <label class="text-white">Nombre real</label>
+              <input type="text" class="step3input form-control mt-1" id="real_name" aria-describedby="real_name"
+                formControlName="nombre" name="real_name" style="text-transform:lowercase;"
+                placeholder="María Gómez Caballero" style="height:40px;" required>
             </div>
             <div class="form-group mt-4">
-              <label class="text-white">Foto de DNI</label>
-              <input type="file" class="form-control mt-1" id="nif" aria-describedby="nif"
-                formControlName="nif" name="nif" style="height:40px;" accept=".png,.jpeg,.jpg,.webp,.gif,.bmp" required>
+              <label class="text-white">Teléfono</label>
+              <input type="text" class="step3input form-control mt-1" id="phone" aria-describedby="phone" formControlName="telefono"
+                name="phone" placeholder="663777889" maxlength="9" minlength="9" style="height:40px;" required>
+            </div>
+            <div class="form-group mt-4">
+              <label class="text-white">Email de registro</label>
+              <input type="email" class="step3input form-control mt-1" id="email" aria-describedby="email" formControlName="email"
+                name="email" style="text-transform:lowercase;" placeholder="usuario14@gmail.com" style="height:40px;"
+                required>
+            </div>
+            <div class="form-group mt-4">
+              <label class="text-white">Foto de NIF</label>
+              <input type="file" class="step3input form-control mt-1" id="nif" aria-describedby="nif" formControlName="nif"
+                name="nif" style="height:40px;" accept=".png,.jpeg,.jpg,.webp,.gif,.bmp" (change)="seleccionImagen($event.target.files[0])" required>
+            </div>
+
+            <div class="form-group mt-4">
+              <label class="text-white">NIF</label>
+              <input type="text" class="step3input form-control mt-1" id="nif_pass" aria-describedby="nif_pass" formControlName="dni"
+                name="nif_pass" style="height:40px;" maxlength="9" minlength="9" accept=".png,.jpeg,.jpg,.webp,.gif,.bmp" required>
+            </div>
+
+            <div class="form-group mt-4">
+              <label class="text-white">* La contraseña se generará automáticamente con tu número de NIF</label>
+            </div>
+            <small class="form-text" style="color:#fff;"></small>
+            <br>
+            <div class="mt-3">
+              <button class="btnstep3 disabled button btn-navigate-form-step btn-navigate-form-step2" disabled  (click)="onSubmit1()" type="button" step_number="2"
+                >Siguiente</button>
+            </div>
+          </div>
+
+        </section>
+        <!-- Step 2 Content, default hidden on page load. -->
+        <section id="step-2" class="form-step d-none" [formGroup]="filesDataForm">
+          <h2 class="font-normal">Sube tus imágenes y vídeos</h2>
+          <!-- Step 2 input fields -->
+          <div class="mt-3">
+            <div class="form-group mt-4">
+              <label class="text-white">Archivos</label>
+              <input type="file" #imagesuploader (change)="onFileChange($event.target.files)" name="files" class="step2input form-control mt-1" id="files"
+                aria-describedby="files" formControlName="files"
+                accept=".png,.jpeg,.jpg,.webp,.gif,.bmp,.avi,.mp4,.mpg,.mov,.3gp,.wmv,.flv" multiple>
             </div>
           </div>
           <div class="mt-3 buttons_div">
-            <button class="button btn-navigate-form-step" type="button" step_number="2">Atrás</button>
-            <button class="button submit-btn" type="submit">Guardar</button>
+            <button class="button btn-navigate-form-step" type="button" step_number="1"
+              >Atrás</button>
+            <button class="btnstep2 disabled button btn-navigate-form-step" disabled  type="button" (click)="onSubmit2()" step_number="3"
+              >Siguiente</button>
+          </div>
+        </section>
+        <!-- Step 3 Content, default hidden on page load. -->
+
+        <section id="step-3" class="form-step d-none" [formGroup]="fakeDataForm">
+
+          <h2 class="font-normal">Datos ficticios</h2>
+          <div class="row">
+            <!-- Step 1 input fields -->
+            <div class="form-group mt-4">
+              <label class="text-white">Nombre fantasía</label>
+              <br>
+              <small class="text-white">Sujeto a disponibilidad</small>
+              <input type="text" class="step1input form-control mt-1" id="name" aria-describedby="name" formControlName="username" name="name" style="text-transform:lowercase;" placeholder="hadita74"
+                style="height:40px;">
+            </div>
+            <div class="form-group mt-4">
+              <label class="text-white">Edad (años)</label>
+              <input type="text" class="step1input form-control mt-1" id="age" aria-describedby="age" formControlName="edad"
+                name="age" placeholder="24" style="height:40px;" required>
+            </div>
+            <div class="form-group mt-4">
+              <label class="text-white">Peso (kg)</label>
+              <input type="text" class="step1input form-control mt-1" id="weight" aria-describedby="weight"
+                formControlName="peso" name="weight" placeholder="82" style="height:40px;" required>
+            </div>
+            <div class="form-group mt-4">
+              <label class="text-white">Altura (cm)</label>
+              <input type="text" class="step1input form-control mt-1" id="height" aria-describedby="height"
+                formControlName="estatura" name="height" placeholder="180" style="height:40px;" required>
+            </div>
+            <div class="form-group mt-4">
+              <label class="text-white">Medidas (cm)</label>
+              <div class="row">
+                <div class="col-md-4 col-xs-12">
+                  <input type="text" name="measures1" class="step1input form-control mt-1" id="measures1"
+                    aria-describedby="measures1" formControlName="busto" placeholder="90" style="height:40px;"
+                    required>
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+                  <input type="text" name="measures2" class="step1input form-control mt-1" id="measures2"
+                    aria-describedby="measures2" formControlName="cintura" placeholder="60" style="height:40px;"
+                    required>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                  <input type="text" name="measures3" class="step1input form-control mt-1" id="measures3"
+                    aria-describedby="measures3" formControlName="cadera" placeholder="90" style="height:40px;"
+                    required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <div class="form-group mt-4">
+                <label class="text-white">Día de inicio</label>
+                <select class="step1input form-control mt-1" name="start_day" id="start_day" style="height:40px;" name="start_day"
+                  formControlName="inicio">
+                  <option value="lunes">Lunes</option>
+                  <option value="martes">Martes</option>
+                  <option value="miercoles">Miércoles</option>
+                  <option value="jueves">Jueves</option>
+                  <option value="viernes">Viernes</option>
+                  <option value="sabado">Sábado</option>
+                  <option value="domingo">Domingo</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <div class="form-group mt-4">
+                <label class="text-white">Día de fin</label>
+                <select class="step1input form-control mt-1" name="end_day" id="end_day" style="height:40px;" name="end_day"
+                  formControlName="fin">
+                  <option value="lunes">Lunes</option>
+                  <option value="martes">Martes</option>
+                  <option value="miercoles">Miércoles</option>
+                  <option value="jueves">Jueves</option>
+                  <option value="viernes">Viernes</option>
+                  <option value="sabado">Sábado</option>
+                  <option value="domingo">Domingo</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <div class="form-group mt-4">
+                <label class="text-white">Hora entrada</label>
+                <input type="text" class="step1input form-control mt-1" id="start_time" aria-describedby="start_time"
+                  formControlName="horario_inicio" name="start_time" placeholder="19:00" style="height:40px;">
+              </div>
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <div class="form-group mt-4">
+                <label class="text-white">Hora salida</label>
+                <input type="text" class="step1input form-control mt-1" id="end_time" aria-describedby="end_time"
+                  formControlName="horario_fin" name="end_time" placeholder="19:00" style="height:40px;">
+              </div>
+            </div>
+            <div class="form-group mt-4">
+              <label class="text-white">Zona</label>
+              <select class="step1input form-control mt-1" name="zone" id="zone" style="height:40px;" formControlName="zonas">
+                <option value="barcelona">Barcelona</option>
+                <option value="madrid">Madrid</option>
+                <option value="valencia">Valencia</option>
+              </select>
+            </div>
+            <div class="form-group mt-4">
+              <label class="text-white">¿Fumas?</label>
+              <select class="step1input form-control mt-1" name="smoke" id="smoke" style="height:40px;" formControlName="fumadora">
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="mt-3 buttons_div">
+              <button class="button btn-navigate-form-step" type="button" step_number="2">Atrás</button>
+              <button class="btnstep1 disabled button submit-btn" type="submit" disabled (click)="onSubmit3()">Guardar</button>
+            </div>
           </div>
         </section>
       </form>
     </div>
   </div>
 </div>
+
+<app-modal-loading [show]="modal_loading"></app-modal-loading>

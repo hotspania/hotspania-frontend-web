@@ -20,6 +20,10 @@ input, select {
     position: relative;
 }
 
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed!important;
+}
 
 input[type="radio"]:checked:after {
     width: 13px;
@@ -45,11 +49,14 @@ hr{
 
 .form-div{
     min-width: 350px;
-    max-width: 350px;
+    width: 800px;
+    max-width: 850px;
     border: 1px solid #f44806;
     border-radius: 10px;
     box-shadow: rgba(244, 72, 6, 0.5) 0px 3px 8px;
     padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 h1 {
