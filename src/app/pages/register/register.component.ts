@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  modal_loading: boolean = false;
   'scripts': ['./register.js'];
+  public modal_loading: boolean = false;
   public fakeDataForm: FormGroup;
   public filesDataForm: FormGroup;
   public realDataForm: FormGroup;
