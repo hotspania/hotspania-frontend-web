@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegisterService } from '../../services/register.service';
 import { Router } from '@angular/router';
+import { ToolsService } from 'src/app/services/tools.service';
 
 @Component({
   selector: 'app-register',
@@ -19,8 +20,13 @@ export class RegisterComponent implements OnInit {
   public archivo: File;
   public images:any=[];
   public ImagenTemp: string;
+  public loading:boolean=false;
 
-  constructor(private _registerService: RegisterService, private router: Router) {
+  constructor(
+    private _registerService: RegisterService,
+    private router: Router,
+    private tool:ToolsService
+    ) {
     this.realDataForm = new FormGroup({
       nombre: new FormControl(null, Validators.required),
       email: new FormControl(null, Validators.required),
@@ -80,6 +86,7 @@ export class RegisterComponent implements OnInit {
   }
 
   public onSubmit1() {
+    this.loading=true;
     this._registerService.registerRealData(this.realDataForm.value).subscribe((resp:any)=>{
       console.log('rr', resp);
       if(resp.ok){
@@ -95,10 +102,11 @@ export class RegisterComponent implements OnInit {
           })
       }
     });
-
+    this.loading=false;
   }
 
   public onSubmit2() {
+    this.loading=true;
     if(this.files.length==1){
       this._registerService.subirArchivo(this.files[0], 'original', this.id).then((resp:any)=>{
         if (resp.ok) {
@@ -112,10 +120,11 @@ export class RegisterComponent implements OnInit {
         }
       });
     }
-
+    this.loading=false;
   }
 
   public onSubmit3() {
+    this.loading=true;
     this.fakeDataForm.value.id = this.id;
     this._registerService.registerFakeData(this.fakeDataForm.value).subscribe((resp: any) => {
       if (resp.ok) {
@@ -123,12 +132,14 @@ export class RegisterComponent implements OnInit {
       }
     });
 
-    /*setTimeout(() => {
-       this.modal_loading=false;
-       this.router.navigate(['/']);
-     }, 2000);*/
+    setTimeout(() => {
+      this.loading=false;
+      this.tool.ShowSuccess("Gracias por registrarse en Hotspania. Muy pronto su usuario será validado.");
+      this.router.navigate([`/`]);
+     }, 2000);
   }
-  public onChange(event: any): void {
+
+  public async onChange(event: any): Promise<void> {
     const target = event.target;
 
     const value = target.value;
@@ -137,7 +148,8 @@ export class RegisterComponent implements OnInit {
 
     switch (name) {
       case 'name':
-        isNaN(value) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
+        await this.existUsername(value) ? this.textError("exist_username", true) : this.textError("exist_username", false);
+        isNaN(value) && !this.checkUndefinedOrNull(value) && await this.existUsername(value) ? this.validate(id, true) : this.validate(id, false);
         break;
 
       case 'age':
@@ -201,8 +213,9 @@ export class RegisterComponent implements OnInit {
         break;
 
       case 'email':
+        await this.existEmail(value) ? this.textError("exist_email", true) : this.textError("exist_email", false);
         value.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
-          && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
+          && !this.checkUndefinedOrNull(value) && await this.existEmail(value) ? this.validate(id, true) : this.validate(id, false);
         break;
 
       case 'nif':
@@ -247,6 +260,15 @@ export class RegisterComponent implements OnInit {
         $(`.btnstep${i}`).addClass('disabled');
         $(`.btnstep${i}`).prop('disabled', true);
       }
+    }
+  }
+
+  private textError(id: any, bool: boolean): void {
+    const selectorID = $(`#${id}`);
+    if (bool) {
+      selectorID.addClass('d-none');
+    } else {
+      selectorID.removeClass('d-none');
     }
   }
 
@@ -378,5 +400,21 @@ export class RegisterComponent implements OnInit {
           navigateToFormStep(stepNumber);
         });
       });
+  }
+
+  private async existEmail(email: string): Promise<boolean>{
+    let bool = false;
+    await this._registerService.existEmail(email).toPromise().then((resp:any)=>{
+      bool = resp.email;
+    });
+    return bool;
+  }
+
+  private async existUsername(username: string): Promise<boolean>{
+    let bool = false;
+    await this._registerService.existUsername(username).toPromise().then((resp:any)=>{
+      bool = resp.username;
+    });
+    return bool;
   }
 }

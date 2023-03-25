@@ -8,13 +8,14 @@ import Swal from 'sweetalert2';
 export class ToolsService {
   constructor(private router:Router) {}
 
-  ShowSuccess() {
-    Swal.fire({
+  ShowSuccess(message?: string) {
+    return Swal.fire({
       position: 'top-end',
       icon: 'success',
       title: 'Hecho !!',
       showConfirmButton: false,
-      timer: 1500
+      timer: 1500,
+      text: message || ""
     });
   }
 
