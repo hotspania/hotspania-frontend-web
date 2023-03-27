@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class RegisterService {
-  public url: String;
   public apiUrl: String;
   token: string = '';
 
@@ -18,7 +17,6 @@ export class RegisterService {
     private ls: LocalStorageService,
     private router: Router,
   ) {
-    this.url = Global.url;
     this.apiUrl = Global.urlimages;
   }
 
@@ -26,13 +24,13 @@ export class RegisterService {
   registerFakeData(form: any): Observable<any> {
     const data = JSON.stringify(form);
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post(this.url + `fakecreate`, data, { headers: headers });
+    return this.http.post(this.apiUrl + `fakecreate`, data, { headers: headers });
   }
 
   registerRealData(form): Observable<any> {
     const data = JSON.stringify(form);
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post(this.url + 'usercreate', data, { headers: headers });
+    return this.http.post(this.apiUrl + 'usercreate', data, { headers: headers });
   }
 
   subirArchivo(archivo: File, tipo: string, id: string) {
@@ -52,7 +50,7 @@ export class RegisterService {
         }
       };
 
-      let url =this.url +'upload/' + tipo + '/' + id;
+      let url =this.apiUrl +'upload/' + tipo + '/' + id;
       xhr.open('POST', url, true);
       xhr.send(formData);
     });
@@ -78,7 +76,7 @@ export class RegisterService {
           }
         }
       };
-      let url = this.url + 'uploads/' + tipo + '/' + id;
+      let url = this.apiUrl + 'uploads/' + tipo + '/' + id;
       xhr.open('POST', url, true);
       xhr.send(formData);
     });
