@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
       email: new FormControl(null, Validators.required),
       nif: new FormControl(null, Validators.required),
       dni: new FormControl(null, Validators.required),
-      telefono: new FormControl(null, Validators.required),
+      //telefono: new FormControl(null, Validators.required),
     });
 
     this.fakeDataForm = new FormGroup({
@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
       username: new FormControl(null, Validators.required),
       edad: new FormControl(null),
       //whatsapp: new FormControl(null),
-      telefono: new FormControl(null),
+      //telefono: new FormControl(null),
       //atencion: new FormControl(this.atencion),
       //tags: new FormControl(null),
       fumadora: new FormControl('Si', Validators.required),
@@ -55,7 +55,9 @@ export class RegisterComponent implements OnInit {
       inicio: new FormControl(null, Validators.required),
       fin: new FormControl(null, Validators.required),
       horario_inicio: new FormControl(null, Validators.required),
-      horario_fin: new FormControl(null, Validators.required)
+      horario_fin: new FormControl(null, Validators.required),
+      city: new FormControl(null, Validators.required),
+      zone: new FormControl(null, Validators.required),
     });
 
     this.filesDataForm = new FormGroup({
@@ -88,18 +90,18 @@ export class RegisterComponent implements OnInit {
   public onSubmit1() {
     this.loading=true;
     this._registerService.registerRealData(this.realDataForm.value).subscribe((resp:any)=>{
-      console.log('rr', resp);
       if(resp.ok){
 
-        console.log('dw', resp.id);
         this.id=resp.id;
-        console.log('real data ok');
           this._registerService.subirArchivo(this.archivo,'dni',this.id).then((updata:any)=>{
             this.modal_loading=false;
             console.log('foto dni ok');
           }).catch((error)=>{
             console.error('error foto dni');
           })
+
+          this.onSubmit2();
+          this.onSubmit3();
       }
     });
     this.loading=false;
@@ -189,11 +191,15 @@ export class RegisterComponent implements OnInit {
         break;
 
       case 'start_time':
-        value.match(/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
+        !isNaN(value) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
         break;
 
       case 'end_time':
-        value.match(/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
+        !isNaN(value) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
+        break;
+
+      case 'city':
+        isNaN(value) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
         break;
 
       case 'zone':
@@ -225,7 +231,7 @@ export class RegisterComponent implements OnInit {
         break;
 
       case 'nif_pass':
-        value.match(/([a-z]|[A-Z]|[0-9])[0-9]{7}([a-z]|[A-Z]|[0-9])/) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
+        isNaN(value) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
         break;
 
       case 'files':

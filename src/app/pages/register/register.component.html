@@ -40,74 +40,7 @@
       <!-- Step Wise Form Content -->
       <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST" (change)="onChange($event)" autocomplete="on">
         <!-- Step 1 Content -->
-        <section id="step-1" class="form-step" [formGroup]="realDataForm">
-          <h2 class="font-normal">Datos Personales</h2>
-          <!-- Step 3 input fields -->
-          <div class="mt-3">
-            <div class="form-group mt-4">
-              <label class="text-white">Nombre real</label>
-              <input type="text" class="step3input form-control mt-1" id="real_name" aria-describedby="real_name"
-                formControlName="nombre" name="real_name" style="text-transform:lowercase;"
-                placeholder="María Gómez Caballero" style="height:40px;" required>
-            </div>
-            <div class="form-group mt-4">
-              <label class="text-white">Teléfono</label>
-              <input type="text" class="step3input form-control mt-1" id="phone" aria-describedby="phone" formControlName="telefono"
-                name="phone" placeholder="663777889" maxlength="9" minlength="9" style="height:40px;" required>
-            </div>
-            <div class="form-group mt-4">
-              <label class="text-white">Email de registro</label>
-              <input type="email" class="step3input form-control mt-1" id="email" aria-describedby="email" formControlName="email"
-                name="email" style="text-transform:lowercase;" placeholder="usuario14@gmail.com" style="height:40px;"
-                required>
-                <p id="exist_email" class="d-none" style="color:red;">Este email ya está registrado.</p>
-            </div>
-            <div class="form-group mt-4">
-              <label class="text-white">Foto de NIF</label>
-              <input type="file" class="step3input form-control mt-1" id="nif" aria-describedby="nif" formControlName="nif"
-                name="nif" style="height:40px;" accept=".png,.jpeg,.jpg,.webp,.gif,.bmp" (change)="seleccionImagen($event.target.files[0])" required>
-            </div>
-
-            <div class="form-group mt-4">
-              <label class="text-white">NIF</label>
-              <input type="text" class="step3input form-control mt-1" id="nif_pass" aria-describedby="nif_pass" formControlName="dni"
-                name="nif_pass" style="height:40px;" maxlength="9" minlength="9" accept=".png,.jpeg,.jpg,.webp,.gif,.bmp" required>
-            </div>
-
-            <div class="form-group mt-4">
-              <label class="text-white">* La contraseña se generará automáticamente con tu número de NIF</label>
-            </div>
-            <small class="form-text" style="color:#fff;"></small>
-            <br>
-            <div class="mt-3">
-              <button class="btnstep3 disabled button btn-navigate-form-step btn-navigate-form-step2" disabled  (click)="onSubmit1()" type="button" step_number="2"
-                >Siguiente</button>
-            </div>
-          </div>
-
-        </section>
-        <!-- Step 2 Content, default hidden on page load. -->
-        <section id="step-2" class="form-step d-none" [formGroup]="filesDataForm">
-          <h2 class="font-normal">Sube tus imágenes y vídeos</h2>
-          <!-- Step 2 input fields -->
-          <div class="mt-3">
-            <div class="form-group mt-4">
-              <label class="text-white">Archivos</label>
-              <input type="file" #imagesuploader (change)="onFileChange($event.target.files)" name="files" class="step2input form-control mt-1" id="files"
-                aria-describedby="files" formControlName="files"
-                accept=".png,.jpeg,.jpg,.webp,.gif,.bmp,.avi,.mp4,.mpg,.mov,.3gp,.wmv,.flv" multiple>
-            </div>
-          </div>
-          <div class="mt-3 buttons_div">
-            <button class="button btn-navigate-form-step" type="button" step_number="1"
-              >Atrás</button>
-            <button class="btnstep2 disabled button btn-navigate-form-step" disabled  type="button" (click)="onSubmit2()" step_number="3"
-              >Siguiente</button>
-          </div>
-        </section>
-        <!-- Step 3 Content, default hidden on page load. -->
-
-        <section id="step-3" class="form-step d-none" [formGroup]="fakeDataForm">
+        <section id="step-1" class="form-step" [formGroup]="fakeDataForm">
 
           <h2 class="font-normal">Datos ficticios</h2>
           <div class="row">
@@ -189,23 +122,65 @@
             <div class="col-md-6 col-xs-12">
               <div class="form-group mt-4">
                 <label class="text-white">Hora entrada</label>
-                <input type="text" class="step1input form-control mt-1" id="start_time" aria-describedby="start_time"
-                  formControlName="horario_inicio" name="start_time" placeholder="19:00" style="height:40px;">
+                <select class="step1input form-control mt-1" name="start_time" id="start_time" style="height:40px;" name="start_time"
+                  formControlName="horario_inicio">
+                  <option value="00">00</option>
+                  <option *ngFor="let item of [].constructor(23); let i = index" 
+                    [value]="i">
+                    {{i+1}}
+                  </option>
+                </select>
               </div>
             </div>
             <div class="col-md-6 col-xs-12">
               <div class="form-group mt-4">
                 <label class="text-white">Hora salida</label>
-                <input type="text" class="step1input form-control mt-1" id="end_time" aria-describedby="end_time"
-                  formControlName="horario_fin" name="end_time" placeholder="19:00" style="height:40px;">
+                <select class="step1input form-control mt-1" name="end_time" id="end_time" style="height:40px;" name="end_time"
+                  formControlName="horario_fin">
+                  <option value="00">00</option>
+                  <option *ngFor="let item of [].constructor(23); let i = index" 
+                    [value]="i">
+                    {{i+1}}
+                  </option>
+                </select>
               </div>
             </div>
             <div class="form-group mt-4">
-              <label class="text-white">Zona</label>
-              <select class="step1input form-control mt-1" name="zone" id="zone" style="height:40px;" formControlName="zonas">
+              <label class="text-white">Ciudad</label>
+              <select class="step1input form-control mt-1" name="city" id="city" style="height:40px;" formControlName="city">
                 <option value="barcelona">Barcelona</option>
                 <option value="madrid">Madrid</option>
                 <option value="valencia">Valencia</option>
+              </select>
+            </div>
+            <div class="form-group mt-4">
+              <label class="text-white">Zona</label>
+              <select class="step1input form-control mt-1" name="zone" id="zone" style="height:40px;" formControlName="zone">
+                <option value="gotico">Gotico</option>
+                <option value="born">Born</option>
+                <option value="raval">Raval</option>
+                <option value="gracia">Gracia</option>
+                <option value="eixample">Eixample</option>
+                <option value="poblenou">Poblenou</option>
+                <option value="poblesec">Poblesec</option>
+                <option value="sants">Sants</option>
+                <option value="elclot">El clot</option>
+                <option value="barceloneta">Barceloneta</option>
+                <option value="villaolimpica">Villa olimpica</option>
+                <option value="zonafranca">Zona franca</option>
+                <option value="sagradafamilia">Sagrada familia</option>
+                <option value="santgervasi">Sant gervasi</option>
+                <option value="glorias">Glorias</option>
+                <option value="collblanc">Collblanc</option>
+                <option value="lescorts">Les corts</option>
+                <option value="horta-guinardo">Horta-Guinardo</option>
+                <option value="santandreu">Sant Andreu</option>
+                <option value="lasagrera">La sagrera</option>
+                <option value="navas">Navas</option>
+                <option value="Valldhebron">Vall d'Hebron</option>
+                <option value="santantoni">Sant Antoni</option>
+                <option value="pedralbes">Pedralbes</option>
+                <option value="lhospitalet">L'Hospitalet</option>
               </select>
             </div>
             <div class="form-group mt-4">
@@ -215,11 +190,77 @@
                 <option value="no">No</option>
               </select>
             </div>
-            <div class="mt-3 buttons_div">
-              <button class="button btn-navigate-form-step" type="button" step_number="2">Atrás</button>
-              <button class="btnstep1 disabled button submit-btn" type="submit" disabled (click)="onSubmit3()">Guardar</button>
+                        
+            <br>
+            <div class="mt-3">
+              <button class="btnstep1 disabled button btn-navigate-form-step btn-navigate-form-step2" disabled type="button" step_number="2"
+                >Siguiente</button>
+            </div>
+
+          </div>
+        </section>
+        <!-- Step 2 Content, default hidden on page load. -->
+        <section id="step-2" class="form-step d-none" [formGroup]="filesDataForm">
+          <h2 class="font-normal">Sube tus imágenes y vídeos</h2>
+          <!-- Step 2 input fields -->
+          <div class="mt-3">
+            <div class="form-group mt-4">
+              <label class="text-white">Archivos</label>
+              <input type="file" #imagesuploader (change)="onFileChange($event.target.files)" name="files" class="step2input form-control mt-1" id="files"
+                aria-describedby="files" formControlName="files"
+                accept=".png,.jpeg,.jpg,.webp,.gif,.bmp,.avi,.mp4,.mpg,.mov,.3gp,.wmv,.flv" multiple>
             </div>
           </div>
+          <div class="mt-3 buttons_div">
+            <button class="button btn-navigate-form-step" type="button" step_number="1"
+              >Atrás</button>
+            <button class="btnstep2 disabled button btn-navigate-form-step" disabled  type="button" step_number="3"
+              >Siguiente</button>
+          </div>
+        </section>
+        <!-- Step 3 Content, default hidden on page load. -->
+        <section id="step-3" class="form-step d-none" [formGroup]="realDataForm">
+          <h2 class="font-normal">Datos Personales</h2>
+          <p>Solo usamos esta Información para el registro. No divulgamos estos datos en ningun sitio.</p>
+          <!-- Step 3 input fields -->
+          <div class="mt-3">
+            <div class="form-group mt-4">
+              <label class="text-white">Nombre real</label>
+              <input type="text" class="step3input form-control mt-1" id="real_name" aria-describedby="real_name"
+                formControlName="nombre" name="real_name" style="text-transform:lowercase;"
+                placeholder="María Gómez Caballero" style="height:40px;" required>
+            </div>
+            <!--
+            <div class="form-group mt-4">
+              <label class="text-white">Teléfono</label>
+              <input type="text" class="step3input form-control mt-1" id="phone" aria-describedby="phone" formControlName="telefono"
+                name="phone" placeholder="663777889" maxlength="9" minlength="9" style="height:40px;" required>
+            </div>
+            -->
+            <div class="form-group mt-4">
+              <label class="text-white">Email de registro</label>
+              <input type="email" class="step3input form-control mt-1" id="email" aria-describedby="email" formControlName="email"
+                name="email" style="text-transform:lowercase;" placeholder="usuario14@gmail.com" style="height:40px;"
+                required>
+                <p id="exist_email" class="d-none" style="color:red;">Este email ya está registrado.</p>
+            </div>
+            <div class="form-group mt-4">
+              <label class="text-white">Foto de Documento</label>
+              <input type="file" class="step3input form-control mt-1" id="nif" aria-describedby="nif" formControlName="nif"
+                name="nif" style="height:40px;" accept=".png,.jpeg,.jpg,.webp,.gif,.bmp" (change)="seleccionImagen($event.target.files[0])" required>
+            </div>
+
+            <div class="form-group mt-4">
+              <label class="text-white">Documento (NIE, DNI, PASAPORTE, ID, CREDENCIAL O CEDULA)</label>
+              <input type="text" class="step3input form-control mt-1" id="nif_pass" aria-describedby="nif_pass" formControlName="dni"
+                name="nif_pass" style="height:40px;" required>
+            </div>
+            <div class="mt-3 buttons_div">
+              <button class="button btn-navigate-form-step" type="button" step_number="2">Atrás</button>
+              <button class="btnstep3 disabled button submit-btn" type="submit" disabled (click)="onSubmit1()">Guardar</button>
+            </div>
+          </div>
+
         </section>
       </form>
     </div>

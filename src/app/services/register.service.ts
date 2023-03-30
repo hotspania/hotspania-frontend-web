@@ -18,6 +18,7 @@ export class RegisterService {
     private router: Router,
   ) {
     this.apiUrl = Global.urlimages;
+    this.apiUrl = 'http://localhost:3500/api/';
   }
 
 
