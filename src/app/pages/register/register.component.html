@@ -94,6 +94,7 @@
                 <label class="text-white">Día de inicio</label>
                 <select class="step1input form-control mt-1" name="start_day" id="start_day" style="height:40px;" name="start_day"
                   formControlName="inicio">
+                  <option value="fulltime">Fulltime</option>
                   <option value="lunes">Lunes</option>
                   <option value="martes">Martes</option>
                   <option value="miercoles">Miércoles</option>
@@ -109,6 +110,7 @@
                 <label class="text-white">Día de fin</label>
                 <select class="step1input form-control mt-1" name="end_day" id="end_day" style="height:40px;" name="end_day"
                   formControlName="fin">
+                  <option value="fulltime">Fulltime</option>
                   <option value="lunes">Lunes</option>
                   <option value="martes">Martes</option>
                   <option value="miercoles">Miércoles</option>
@@ -143,6 +145,49 @@
                     {{i+1}}
                   </option>
                 </select>
+              </div>
+            </div>
+            <div class="form-group mt-4">
+              <label class="text-white">Teléfono Laboral</label>
+              <input type="text" class="step1input form-control mt-1" id="phone" aria-describedby="phone"
+                formControlName="telefono" name="phone" placeholder="612890214" style="height:40px;" required>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="1" id="calls" formControlName="llamadas">
+                  <label class="form-check-label" for="calls" style="color:#fff;">
+                    Llamadas
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="1" id="whatsapp" formControlName="whatsapp">
+                  <label class="form-check-label" for="whatsapp" style="color:#fff;">
+                    Whatsapp
+                  </label>
+                </div>
+            </div>
+            <div class="form-group mt-4">
+              <label class="text-white">Género</label>
+              <select class="step1input form-control mt-1" name="gender" id="gender" style="height:40px;" formControlName="genero">
+                <option value="hombre">Hombre</option>
+                <option value="mujer">Mujer</option>
+                <option value="travesti">Travesti</option>
+                <option value="transexual">Transexual</option>
+              </select>
+            </div>
+            <div class="form-group mt-4">
+              <label class="text-white">Servicios</label>
+              <select class="step1input form-control mt-1" name="services" id="services" style="height:40px;" formControlName="servicios">
+                <option value="normales">Normales</option>
+                <option value="normales y adicionales">Normales y Adicionales</option>
+                <option value="normales y completos">Normales y Completos</option>
+              </select>
+            </div>
+            <div class="form-group mt-4">
+              <label class="text-white">Idiomas</label>
+              <div class="form-check" *ngFor="let lang of languages; let i=index">
+                <input class="form-check-input" type="checkbox" [name]="lang.name" [value]="lang.value" [id]="lang.id" formArrayName="idioma" [checked]="lang.checked" (change)="onCheckChange($event)">
+                <label class="form-check-label" for="español" style="color:#fff;">
+                  {{ lang.description }}
+                </label>
               </div>
             </div>
             <div class="form-group mt-4">
@@ -209,6 +254,7 @@
               <input type="file" #imagesuploader (change)="onFileChange($event.target.files)" name="files" class="step2input form-control mt-1" id="files"
                 aria-describedby="files" formControlName="files"
                 accept=".png,.jpeg,.jpg,.webp,.gif,.bmp,.avi,.mp4,.mpg,.mov,.3gp,.wmv,.flv" multiple>
+                <small style="color:#fff;">Máximo 20 archivos y 4mb por cada uno.</small>
             </div>
           </div>
           <div class="mt-3 buttons_div">

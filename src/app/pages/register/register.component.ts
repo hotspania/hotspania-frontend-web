@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegisterService } from '../../services/register.service';
 import { Router } from '@angular/router';
 import { ToolsService } from 'src/app/services/tools.service';
@@ -21,6 +21,15 @@ export class RegisterComponent implements OnInit {
   public images:any=[];
   public ImagenTemp: string;
   public loading:boolean=false;
+  public languages: any = [
+    { name: 'español', description:'Español', id: 'español', value: 'español', checked: true },
+    { name: 'ingles', description:'Inglés', id: 'ingles', value: 'ingles', checked: false },
+    { name: 'frances', description:'Francés', id: 'frances', value: 'frances', checked: false },
+    { name: 'aleman', description:'Alemán', id: 'aleman', value: 'aleman', checked: false },
+    { name: 'portugues', description:'Portugués', id: 'portugues', value: 'portugues', checked: false },
+    { name: 'ruso', description:'Ruso', id: 'ruso', value: 'ruso', checked: false },
+    { name: 'arabe', description:'Árabe', id: 'arabe', value: 'arabe', checked: false },
+  ];
 
   constructor(
     private _registerService: RegisterService,
@@ -39,14 +48,16 @@ export class RegisterComponent implements OnInit {
       id: new FormControl(null, Validators.required),
       username: new FormControl(null, Validators.required),
       edad: new FormControl(null),
-      //whatsapp: new FormControl(null),
-      //telefono: new FormControl(null),
+      whatsapp: new FormControl(1, Validators.required),
+      llamadas: new FormControl(1, Validators.required),
+      telefono: new FormControl(null),
       //atencion: new FormControl(this.atencion),
       //tags: new FormControl(null),
       fumadora: new FormControl('Si', Validators.required),
       zonas: new FormControl(null, Validators.required),
-      //genero: new FormControl(null, Validators.required),
-      //servicios: new FormControl('Normales', Validators.required),
+      genero: new FormControl(null, Validators.required),
+      servicios: new FormControl(null, Validators.required),
+      idioma: new FormArray([], Validators.required),
       estatura: new FormControl(null),
       peso: new FormControl(null),
       busto: new FormControl(null),
@@ -101,7 +112,6 @@ export class RegisterComponent implements OnInit {
           })
 
           this.onSubmit2();
-          this.onSubmit3();
       }
     });
     this.loading=false;
@@ -112,12 +122,14 @@ export class RegisterComponent implements OnInit {
     if(this.files.length==1){
       this._registerService.subirArchivo(this.files[0], 'original', this.id).then((resp:any)=>{
         if (resp.ok) {
+          this.onSubmit3();
           console.log('files ok');
         }
       });
     }else{
       this._registerService.registerFiles(this.files, 'original', this.id).then((resp:any)=>{
         if (resp.ok) {
+          this.onSubmit3();
           console.log('files ok');
         }
       });
@@ -197,6 +209,14 @@ export class RegisterComponent implements OnInit {
       case 'end_time':
         !isNaN(value) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
         break;
+        
+      case 'gender':
+        isNaN(value) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
+        break;
+
+      case 'services':
+        isNaN(value) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
+        break;
 
       case 'city':
         isNaN(value) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
@@ -211,7 +231,7 @@ export class RegisterComponent implements OnInit {
         break;
 
       case 'phone':
-        !isNaN(value) && value.length === 9 && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
+        !isNaN(value) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
         break;
 
       case 'real_name':
@@ -231,17 +251,27 @@ export class RegisterComponent implements OnInit {
         break;
 
       case 'nif_pass':
-        isNaN(value) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
+        !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
         break;
 
       case 'files':
         const allowedExtensions2 = ['jpeg', 'jpg', 'png', 'webp', 'gif', 'bmp', 'mp4', 'avi', 'mpg', 'mov', 'wmv', 'flv', '3gp'];
         let totalErrors = 0;
+
+        if(this.files.length > 20){
+          totalErrors++;
+        }
+
         this.files.map((val) => {
           const fileExtension = val.name.split('.').pop().toLowerCase();
           if (!allowedExtensions2.includes(fileExtension)) {
             totalErrors++;
           }
+
+          if (val.size > 10000000) {
+            totalErrors++;
+          }
+    
         });
         totalErrors === 0 && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
         break;
@@ -311,6 +341,32 @@ export class RegisterComponent implements OnInit {
       return true;
     } else {
       return false;
+    }
+  }
+
+  public onCheckChange(event) {
+    const formArray: FormArray = this.fakeDataForm.get('idioma') as FormArray;
+    formArray.push(new FormControl("español"));
+  
+    /* Selected */
+    if(event.target.checked){
+      // Add a new control in the arrayForm
+      formArray.push(new FormControl(event.target.value));
+    }
+    /* unselected */
+    else{
+      // find the unselected element
+      let i: number = 0;
+  
+      formArray.controls.forEach((ctrl: FormControl) => {
+        if(ctrl.value == event.target.value) {
+          // Remove the unselected element from the arrayForm
+          formArray.removeAt(i);
+          return;
+        }
+  
+        i++;
+      });
     }
   }
 
