@@ -94,7 +94,6 @@
                 <label class="text-white">Día de inicio</label>
                 <select class="step1input form-control mt-1" name="start_day" id="start_day" style="height:40px;" name="start_day"
                   formControlName="inicio">
-                  <option value="fulltime">Fulltime</option>
                   <option value="lunes">Lunes</option>
                   <option value="martes">Martes</option>
                   <option value="miercoles">Miércoles</option>
@@ -110,7 +109,6 @@
                 <label class="text-white">Día de fin</label>
                 <select class="step1input form-control mt-1" name="end_day" id="end_day" style="height:40px;" name="end_day"
                   formControlName="fin">
-                  <option value="fulltime">Fulltime</option>
                   <option value="lunes">Lunes</option>
                   <option value="martes">Martes</option>
                   <option value="miercoles">Miércoles</option>
@@ -126,6 +124,7 @@
                 <label class="text-white">Hora entrada</label>
                 <select class="step1input form-control mt-1" name="start_time" id="start_time" style="height:40px;" name="start_time"
                   formControlName="horario_inicio">
+                  <option value="fulltime">Fulltime</option>
                   <option value="00">00</option>
                   <option *ngFor="let item of [].constructor(23); let i = index" 
                     [value]="i">
@@ -139,6 +138,7 @@
                 <label class="text-white">Hora salida</label>
                 <select class="step1input form-control mt-1" name="end_time" id="end_time" style="height:40px;" name="end_time"
                   formControlName="horario_fin">
+                  <option value="fulltime">Fulltime</option>
                   <option value="00">00</option>
                   <option *ngFor="let item of [].constructor(23); let i = index" 
                     [value]="i">
@@ -169,6 +169,7 @@
               <select class="step1input form-control mt-1" name="gender" id="gender" style="height:40px;" formControlName="genero">
                 <option value="hombre">Hombre</option>
                 <option value="mujer">Mujer</option>
+                <option value="trans">Trans</option>
                 <option value="travesti">Travesti</option>
                 <option value="transexual">Transexual</option>
               </select>

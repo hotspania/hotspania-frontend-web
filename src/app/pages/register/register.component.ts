@@ -203,11 +203,11 @@ export class RegisterComponent implements OnInit {
         break;
 
       case 'start_time':
-        !isNaN(value) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
+         !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
         break;
 
       case 'end_time':
-        !isNaN(value) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
+         !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
         break;
         
       case 'gender':
