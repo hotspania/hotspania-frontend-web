@@ -89,7 +89,7 @@ export class RegisterComponent implements OnInit {
     if (file.type.indexOf('image') < 0) {
       return;
     }
-    if (file.size > 10000000) {
+    if (file.size > 4000000) {
       return;
     }
     let reader = new FileReader();
@@ -102,7 +102,6 @@ export class RegisterComponent implements OnInit {
     this.loading=true;
     this._registerService.registerRealData(this.realDataForm.value).subscribe((resp:any)=>{
       if(resp.ok){
-
         this.id=resp.id;
           this._registerService.subirArchivo(this.archivo,'dni',this.id).then((updata:any)=>{
             this.modal_loading=false;
@@ -121,6 +120,7 @@ export class RegisterComponent implements OnInit {
     this.loading=true;
     if(this.files.length==1){
       this._registerService.subirArchivo(this.files[0], 'original', this.id).then((resp:any)=>{
+        console.log(resp.message);
         if (resp.ok) {
           this.onSubmit3();
           console.log('files ok');
@@ -128,6 +128,7 @@ export class RegisterComponent implements OnInit {
       });
     }else{
       this._registerService.registerFiles(this.files, 'original', this.id).then((resp:any)=>{
+        console.log(resp.message);
         if (resp.ok) {
           this.onSubmit3();
           console.log('files ok');
@@ -247,6 +248,7 @@ export class RegisterComponent implements OnInit {
       case 'nif':
         const allowedExtensions = ['jpeg', 'jpg', 'png', 'webp', 'gif', 'bmp'];
         const fileExtension = value.split('.').pop().toLowerCase();
+        console.log('wfeg', value);
         allowedExtensions.includes(fileExtension) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
         break;
 
@@ -263,12 +265,13 @@ export class RegisterComponent implements OnInit {
         }
 
         this.files.map((val) => {
+          console.log('trtjrt', val);
           const fileExtension = val.name.split('.').pop().toLowerCase();
           if (!allowedExtensions2.includes(fileExtension)) {
             totalErrors++;
           }
 
-          if (val.size > 10000000) {
+          if (val.size > 4000000) {
             totalErrors++;
           }
     
