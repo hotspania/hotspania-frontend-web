@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   public fakeDataForm: FormGroup;
   public filesDataForm: FormGroup;
   public realDataForm: FormGroup;
+  public notificationForm: FormGroup;
   private id: string = "";
   private files: any[] = [];
   public archivo: File;
@@ -73,6 +74,12 @@ export class RegisterComponent implements OnInit {
 
     this.filesDataForm = new FormGroup({
       files: new FormControl(null, Validators.required),
+    });
+
+    this.notificationForm = new FormGroup({
+      titulo: new FormControl(null, Validators.required),
+      descripcion: new FormControl(null, Validators.required),
+      tipo: new FormControl(null, Validators.required),
     });
   }
 
@@ -146,6 +153,19 @@ export class RegisterComponent implements OnInit {
         console.log('fake data ok');
       }
     });
+
+    this.notificationForm.setValue({
+      titulo: 'Registro',
+      descripcion: `Usuario ${this.fakeDataForm.value.username} (${this.realDataForm.value.email})`,
+      tipo: 'Registro',
+    });
+
+    this._registerService.saveNotification(this.notificationForm.value).subscribe((resp: any) => {
+      if (resp.ok) {
+        console.log('notification ok');
+      }
+    });
+
 
     setTimeout(() => {
       this.loading=false;

@@ -34,6 +34,12 @@ export class RegisterService {
     return this.http.post(this.apiUrl + 'usercreate', data, { headers: headers });
   }
 
+  saveNotification(form: any): Observable<any> {
+    const data = JSON.stringify(form);
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(this.apiUrl + `savenotification`, data, { headers: headers });
+  }
+
   subirArchivo(archivo: File, tipo: string, id: string) {
     return new Promise(async (resolve, reject) => {
       const formData: FormData = new FormData();
