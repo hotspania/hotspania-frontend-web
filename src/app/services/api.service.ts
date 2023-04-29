@@ -21,6 +21,7 @@ export class ApiService {
     private router: Router
   ) {
     this.url = Global.url;
+    //this.url = "http://localhost:3500/web/";
   }
 
   validToken(): Observable<any> {
