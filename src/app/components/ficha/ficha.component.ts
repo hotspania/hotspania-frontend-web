@@ -28,7 +28,7 @@ export class FichaComponent implements OnInit {
   }
 
   getimage(){
-    this.image=`${Global.urlimages}/img/profile/${this.item.imagen}`;
+    this.image=`${Global.urlimages}img/profile/${this.item.imagen}`;
   }
 
   nav(){
