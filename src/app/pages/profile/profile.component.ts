@@ -72,7 +72,7 @@ export class ProfileComponent implements OnInit {
         this.whatsapp = `https://api.whatsapp.com/send?phone=+54${this.item.whatsapp}&text=Hola,%20vi%20tu%20ficha%20en%20www.planetarelax.com,%20quería%20hacerte%20una%20consulta`;
         this.colletion = resp.colletion;
         this.loading = false;
-        this.profileimage = `${Global.urlimages}/img/profile/${this.colletion.imagen}`;
+        this.profileimage = `${Global.urlimages}/img/original/${this.colletion.imagen}`;
       }
     });
   }
