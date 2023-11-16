@@ -64,6 +64,7 @@ export class ApiService {
     !!state ? ($params = $params.append('status', state)) : '';
     return this.http.get(this.url + 'listado/' + id, { headers: headers,params: $params });
   }
+
   getFicha(id): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get(this.url + 'profile/' + id, { headers: headers });
