@@ -22,6 +22,7 @@ export class RegisterComponent implements OnInit {
   public images:any=[];
   public ImagenTemp: string;
   public loading:boolean=false;
+  public isFullTime: boolean = false;
   public languages: any = [
     { name: 'español', description:'Español', id: 'español', value: 'español', checked: true },
     { name: 'ingles', description:'Inglés', id: 'ingles', value: 'ingles', checked: false },
@@ -81,6 +82,7 @@ export class RegisterComponent implements OnInit {
       descripcion: new FormControl(null, Validators.required),
       tipo: new FormControl(null, Validators.required),
     });
+
   }
 
   ngOnInit(): void {
@@ -174,6 +176,29 @@ export class RegisterComponent implements OnInit {
      }, 2000);
   }
 
+  public setFulltime(event: any) {
+    const checked = event.target.checked;
+    const div_horario_inicio = document.querySelector<HTMLElement>('#div_horario_inicio');
+    const div_horario_fin = document.querySelector<HTMLElement>('#div_horario_fin');
+    const horario_inicio = document.querySelector<HTMLElement>('#start_time');
+    const horario_fin = document.querySelector<HTMLElement>('#end_time');
+    if(checked) {
+      this.isFullTime = true;
+      div_horario_inicio.style.display = "none";
+      horario_inicio.classList.remove("step1input");
+      div_horario_fin.style.display = "none";
+      horario_fin.classList.remove("step1input");
+      this.fakeDataForm.patchValue({ horario_fin: "fulltime", horario_inicio: "fulltime" });
+    } else {
+      this.isFullTime = false;
+      div_horario_inicio.style.display = "block";
+      horario_inicio.classList.add("step1input");
+      div_horario_fin.style.display = "block";
+      horario_fin.classList.add("step1input");
+      this.fakeDataForm.patchValue({ horario_fin: null, horario_inicio: null });
+    }
+  }
+
   public async onChange(event: any): Promise<void> {
     const target = event.target;
 
@@ -222,14 +247,6 @@ export class RegisterComponent implements OnInit {
       case 'end_day':
         isNaN(value) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
         break;
-
-      case 'start_time':
-         !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
-        break;
-
-      case 'end_time':
-         !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
-        break;
         
       case 'gender':
         isNaN(value) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
@@ -268,7 +285,6 @@ export class RegisterComponent implements OnInit {
       case 'nif':
         const allowedExtensions = ['jpeg', 'jpg', 'png', 'webp', 'gif', 'bmp'];
         const fileExtension = value.split('.').pop().toLowerCase();
-        console.log('wfeg', value);
         allowedExtensions.includes(fileExtension) && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
         break;
 
@@ -285,7 +301,6 @@ export class RegisterComponent implements OnInit {
         }
 
         this.files.map((val) => {
-          console.log('trtjrt', val);
           const fileExtension = val.name.split('.').pop().toLowerCase();
           if (!allowedExtensions2.includes(fileExtension)) {
             totalErrors++;
@@ -299,6 +314,19 @@ export class RegisterComponent implements OnInit {
         totalErrors === 0 && !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
         break;
     }
+
+    if(!this.isFullTime){
+      switch(name) {
+        case 'start_time':
+          !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
+         break;
+ 
+       case 'end_time':
+          !this.checkUndefinedOrNull(value) ? this.validate(id, true) : this.validate(id, false);
+         break;
+      }
+    }
+
     this.validateSection();
   }
 

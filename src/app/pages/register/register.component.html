@@ -119,12 +119,19 @@
                 </select>
               </div>
             </div>
-            <div class="col-md-6 col-xs-12">
-              <div class="form-group mt-4">
+            <div class="col-md-12 col-xs-12">
+              <div class="form-check mt-4">
+                <input class="form-check-input" type="checkbox" value="1" id="fulltime" formControlName="fulltime" [ngModel]="fulltime" (change)="setFulltime($event)">
+                <label class="form-check-label" for="fulltime" style="color:#fff;">
+                  Fulltime
+                </label>
+              </div>
+            </div>
+            <div class="col-md-6 col-xs-12" id="div_horario_inicio">
+              <div class="form-group mt-2">
                 <label class="text-white">Hora entrada</label>
                 <select class="step1input form-control mt-1" name="start_time" id="start_time" style="height:40px;" name="start_time"
                   formControlName="horario_inicio">
-                  <option value="fulltime">Fulltime</option>
                   <option value="00">00</option>
                   <option *ngFor="let item of [].constructor(23); let i = index" 
                     [value]="i">
@@ -133,12 +140,11 @@
                 </select>
               </div>
             </div>
-            <div class="col-md-6 col-xs-12">
-              <div class="form-group mt-4">
+            <div class="col-md-6 col-xs-12" id="div_horario_fin">
+              <div class="form-group mt-2">
                 <label class="text-white">Hora salida</label>
                 <select class="step1input form-control mt-1" name="end_time" id="end_time" style="height:40px;" name="end_time"
                   formControlName="horario_fin">
-                  <option value="fulltime">Fulltime</option>
                   <option value="00">00</option>
                   <option *ngFor="let item of [].constructor(23); let i = index" 
                     [value]="i">
